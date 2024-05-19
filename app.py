@@ -23,7 +23,7 @@ def patientlogin():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        if username == 'admin' and password == 'password':
+        if username == '01846200413' and password == 'password':
             session['user'] = username
             flash('Login successful!', 'success')
             return redirect(url_for('patientdashboard'))
@@ -36,11 +36,31 @@ def patientlogin():
 def patientdashboard():
     user = session.get('user')
     if user is None:
-        flash('Login successful!', 'success')
+        flash('You are not logged in,please login.', 'success')
         return redirect(url_for('patientlogin'))
 
     title = "Patient dashboard"
     return render_template('patient/dashboard.html',title=title)
+
+@app.route('/if-you-dont-have-lung-cancer')
+def ifyoudonthavelungcancer():
+    user = session.get('user')
+    if user is None:
+        flash('You are not logged in,please login.', 'success')
+        return redirect(url_for('patientlogin'))
+
+    title = "If you dont have lung cancer"
+    return render_template('patient/if-you-dont-have-lung-cancer.html',title=title)
+
+@app.route('/if-you-have-lung-cancer')
+def ifyouhavelungcancer():
+    user = session.get('user')
+    if user is None:
+        flash('You are not logged in,please login.', 'success')
+        return redirect(url_for('patientlogin'))
+
+    title = "If you have lung cancer"
+    return render_template('patient/if-you-have-lung-cancer.html',title=title)
 
 
 @app.route('/logout')
@@ -48,6 +68,7 @@ def logout():
     session.pop('user', None)
     flash('You have been logged out.', 'info')
     return redirect(url_for('home'))
+
 
 if __name__ == '__main__':
     app.run()
