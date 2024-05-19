@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+
+    <div class="content account-page" style="padding: 50px 0px; min-height: 32.969px;">
+				<div class="container-fluid">
+
+
+
+					<div class="row">
+						<div class="col-md-8 offset-md-2">
+
+							<!-- Login Tab Content -->
+							<div class="account-content">
+								<div class="row align-items-center justify-content-center">
+									<div class="col-md-7 col-lg-6 login-left">
+										<img src="{{ url_for('static', filename='assets/img/login-banner.png') }}" class="img-fluid" alt="Login">
+									</div>
+									<div class="col-md-12 col-lg-6 login-right">
+										<div class="login-header">
+											<h2 class="bn"><span>লগইন করুন-রোগী</span></h2>
+										</div>
+										<div class="row form-row social-login">
+												<div class="col-4">
+													<a href="#" class="btn btn-google btn-block">
+													<font size="4" class="bn">
+													<i class="fas fa-user-injured mr-1"></i> রোগী
+													</font>
+													</a>
+												</div>
+												<div class="col-4">
+													<a href="#" class="btn btn-facebook btn-block">
+													<font size="4" class="bn">
+													<i class="fas fa-user-md mr-1"></i> ডাক্তার
+													</font>
+													</a>
+												</div>
+												<div class="col-4">
+													<a href="#" class="btn btn-facebook btn-block">
+													<font size="4" class="bn">
+													<i class="fas fa-user-tie mr-1"></i> এজেন্ট
+													</font>
+													</a>
+												</div>
+											</div>
+											<br>
+       {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="alert alert-success alert-dismissible fade show bn" role="alert">
+                    <ul>
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                   </ul>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+
+            {% endif %}
+        {% endwith %}
+
+										<form  method="post">
+										<input type="hidden" name="_token" value="dmKrVKWydPNgritshklWpo4QiGsUk4htFadxCKDP" autocomplete="off">
+																											<div class="form-group form-focus">
+												<input type="text" name="username" class="form-control floating">
+												<label class="focus-label bn">ফোন নম্বর</label>
+											</div>
+											<div class="form-group form-focus">
+												<input type="password" name="password" class="form-control floating">
+												<label class="focus-label bn">পাসওয়ার্ড</label>
+											</div>
+
+											<div class="text-right">
+												<a class="forgot-link bn" href="forgot-password">পাসওয়ার্ড ভুলে গেছেন ?</a>
+											</div>
+											<button class="btn btn-primary btn-block btn-lg login-btn bn" type="submit"><font size="5" color="black">লগইন</font> </button>
+											<div class="login-or">
+												<span class="or-line"></span>
+												<span class="span-or">or</span>
+											</div>
+
+											<div class="text-center dont-have bn"><font size="4">অ্যাকাউন্ট নেই?</font> <a href="#" class="bn"><font size="4" color="black">নিবন্ধন করুন</font></a></div>
+										</form>
+									</div>
+								</div>
+							</div>
+							<!-- /Login Tab Content -->
+
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+
+{% endblock %}

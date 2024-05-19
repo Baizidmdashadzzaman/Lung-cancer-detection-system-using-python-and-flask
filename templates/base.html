@@ -1,0 +1,586 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+		<title>{% block title %}{% endblock %} : Lung cancer detection</title>
+		<!-- Favicons -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+		<link type="image/x-icon" href="{{ url_for('static', filename='assets/img/favicon.png') }}" rel="icon">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}">
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/fontawesome/css/fontawesome.min.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/fontawesome/css/all.min.css') }}">
+		<!-- Fancybox CSS -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/fancybox/jquery.fancybox.min.css') }}">
+		<!-- Daterangepikcer CSS -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/daterangepicker/daterangepicker.css') }}">
+		<!-- Select2 CSS -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/select2/css/select2.min.css') }}">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css') }}">
+
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/dropzone/dropzone.min.css') }}">
+		<!-- Datetimepicker CSS -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/bootstrap-datetimepicker.min.css') }}">
+		<!-- Full Calander CSS -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/fullcalendar/fullcalendar.min.css') }}">
+
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}">
+        <style>
+
+		.modal-backdrop.fade {
+opacity: 0;
+filter: alpha(opacity=0);
+}
+.modal-backdrop.fade.in {
+opacity: 0.5;
+filter: alpha(opacity=50);
+}
+.custom-modal{
+	 background-color: rgba(0, 0, 0, .4);
+}
+
+.main-nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding-left: 30px;
+}
+
+
+		</style>
+      <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://fonts.maateen.me/bangla/font.css" rel="stylesheet">
+	<style>
+	.bn {
+    font-family: 'Bangla', Arial, sans-serif !important;
+     }
+	</style>
+      <meta name="keywords" content="EDoctorMeet – প্রবাসে বাংলার ডাক্তার ,EDoctorMeet.com,Online Doctor,Probashider jonno doctor,Bangla Doctor" />
+      <meta name="description" content="বিশ্বজুড়ে থাকা আমাদের রেমিটেন্স ফাইটারদের স্বাস্থ্যসেবার জন্য প্রবাসে বাংলার ডাক্তার একটি অনন্য প্লাটফর্ম।এর পেছনে মূল ধারনাটি যে কোনো দেশের রেমিটেন্স ফাইটররা যাতে করে নিজ স্থানীয় ডাক্তার সহজেই খুজে পায় এবং কোন বাধা ছাড়া আলোচনা করতে পারে।এটি যেকোনো সময়ে যুক্তিসঙ্গত ব্যয়ে সবার স্বাস্থ্য সমস্যা সামাধানে সহজতর উপায়।প্লাটফর্মটি পুরো বিশ্বে প্রবাসী বাংলাদেশিদের স্বাস্থ্যসেবা নিশ্চিতের এক অনন্য নজির।" />
+     <meta name="author" content="">
+
+<style>
+/* WhatsApp Button */
+
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:20px;
+	left:40px;
+	background-color:#25d366;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:30px;
+	box-shadow: 2px 2px 3px #999;
+  z-index:100;
+}
+
+.my-float{
+	margin-top:16px;
+}
+</style>
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<style>
+    .box{
+     display: none;
+     width:100%;
+
+    }
+		  .videoWrapper {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+}
+.videoWrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.search-box .search-info {
+    -ms-flex: 0 0 490px;
+    flex: 0 0 750px;
+    margin-right: 12px;
+    position: relative;
+    width: 100%;
+}
+.dek-menu{
+    display: none;
+}
+@media only screen and (max-width:960px){
+ .dek-menu{
+ display:block;
+}
+}
+
+</style>
+  </head>
+  <!-- Loader -->
+	<!-- /Loader  -->
+<div class="main-wrapper">
+<!-- Header -->
+<header class="header">
+				<nav class="navbar navbar-expand-lg header-nav">
+					<!--<div class="navbar-header" style="padding-right:50px">-->
+					<div class="navbar-header" >
+						<a id="mobile_btn" href="javascript:void(0);">
+							<span class="bar-icon">
+								<span></span>
+								<span></span>
+								<span></span>
+							</span>
+						</a>
+						<a href="/" class="navbar-brand logo">
+							<img src="{{ url_for('static', filename='images/logo.png') }}"  class="img-fluid" style="max-width: 100%;" alt="Logo">
+						</a>
+					</div>
+					<div class="main-menu-wrapper">
+						<div class="menu-header">
+							<a href="/" class="menu-logo">
+								<img src="{{ url_for('static', filename='images/logo.png') }}" class="img-fluid" alt="Logo">
+							</a>
+							<a id="menu_close" class="menu-close" href="javascript:void(0);">
+								<i class="fas fa-times"></i>
+							</a>
+						</div>
+						<ul class="main-nav">
+							<li class="active">
+								<a href="/"><font size="4" class="bn">হোম</font></a>
+							</li>
+							<li class="">
+								<a href="/"><font size="4" class="bn">আমাদের সম্পর্কে</font></a>
+							</li>
+							<li class="">
+								<a href="/"><font size="4" class="bn">আমাদের সেবাসমূহ</font></a>
+							</li>
+							<li class="">
+								<a href="/"><font size="4" class="bn">যোগাযোগ করুন</font></a>
+							</li>
+
+
+
+							<li class="">
+								<a href="{{ url_for('patientlogin') }}"><font size="4" class="bn">লগইন করুন</font></a>
+							</li>
+							<li class="">
+							<a href=""><font size="4" class="bn">রেজিষ্টার করুন</font></a>
+							</li>
+
+						   <div class="dek-menu">
+						   	<li class="nav-item contact-item" >
+						     <a class="nav-link header-login bn" href="{{ url_for('patientlogin') }}"><font size="4" color="white">লগইন / রেজিষ্টার</font></a>
+
+						   </li>
+
+
+						   </div>
+
+						</ul>
+					</div>
+
+
+					<ul class="nav header-navbar-rht">
+
+						<li class="nav-item contact-item">
+							<div class="header-contact-img">
+								<i class="far fa-hospital"></i>
+							</div>
+							<div class="header-contact-detail">
+								<p class="contact-header "><font size="4" class="bn">যোগাযোগ করুন</font></p>
+								<p class="contact-info-header">8801846200413</p>
+							</div>
+
+							<li class="nav-item">
+							<a class="nav-link header-login bn" href="{{ url_for('patientlogin') }}"><font size="4">লগইন / রেজিষ্টার</font></a>
+							</li>
+
+						</li>
+
+
+
+
+
+
+					</ul>
+				</nav>
+			</header>
+			<!-- /Header -->
+
+
+    {% block content %}{% endblock %}
+
+
+	   </div>
+	   <!-- /Main Wrapper -->
+
+<a href="http://api.whatsapp.com/send?phone=8801632720273&text=আমার ডাক্তারের অ্যাপয়েন্টমেন্ট দরকার
+" class="float" target="_blank">
+<i class="fa fa-whatsapp my-float "  style="color:white"></i>
+</a>
+
+
+
+<!-- Footer -->
+	<footer class="footer">
+
+				<!-- Footer Top -->
+				<div class="footer-top">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-lg-3 col-md-6">
+
+								<!-- Footer Widget -->
+								<div class="footer-widget footer-about">
+									<div class="footer-logo">
+										<img src="{{ url_for('static', filename='images/logo.png') }}" class="img-fluid" alt="logo">
+									</div>
+									<div class="footer-about-content">
+										<p><font class="bn">ফুসফুসের ক্যান্সার সনাক্তকরণ সিস্টেম</font></p>
+                                        <p class="bn">
+                                        রিপোর্ট অনুসারে, "জানুয়ারী 2015 থেকে ডিসেম্বর 2017 পর্যন্ত, মোট 76,543 জন নতুন রোগী ন্যাশনাল ইনস্টিটিউট অফ ক্যান্সার রিসার্চ অ্যান্ড হসপিটাল (NICRH) এর বহির্বিভাগে যোগ দিয়েছিলেন। তাদের মধ্যে 35,369 জন নিশ্চিত বা অস্থায়ী ক্যান্সার নির্ণয় এবং তারা চূড়ান্ত বিশ্লেষণে অন্তর্ভুক্ত ছিল।"
+                                    </p>
+										<div class="social-icon">
+											<ul>
+												<li>
+													<a href="#" target="_blank"><i class="fab fa-facebook-f"></i> </a>
+												</li>
+												<li>
+													<a href="#" target="_blank"><i class="fab fa-twitter"></i> </a>
+												</li>
+												<li>
+													<a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+												</li>
+												<li>
+													<a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+												</li>
+												<li>
+													<a href="#" target="_blank"><i class="fab fa-dribbble"></i> </a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<!-- /Footer Widget -->
+
+							</div>
+
+							<div class="col-lg-3 col-md-6">
+
+
+
+							</div>
+
+							<div class="col-lg-3 col-md-6">
+
+
+
+							</div>
+
+							<div class="col-lg-3 col-md-6">
+
+								<!-- Footer Widget -->
+								<div class="footer-widget footer-contact">
+									<h2 class="footer-title"><font size="6" class="bn">যোগাযোগ করুন</font></h2>
+									<div class="footer-contact-info">
+										<div class="footer-address">
+											<span><i class="fas fa-map-marker-alt"></i></span>
+											<p> <font size="4" class="bn">চট্টগ্রাম বাংলাদেশ</font> </p>
+										</div>
+										<p>
+											<i class="fas fa-phone-alt"></i>
+											8801846200413
+										</p>
+										<p class="mb-0">
+											<i class="fas fa-envelope"></i>
+											lungcancerdetection@gmail.com
+										</p>
+									</div>
+								</div>
+								<!-- /Footer Widget -->
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<!-- /Footer Top -->
+
+				<!-- Footer Bottom -->
+                <div class="footer-bottom">
+					<div class="container-fluid">
+
+						<!-- Copyright -->
+						<div class="copyright">
+							<div class="row">
+								<div class="col-md-6 col-lg-6">
+									<div class="copyright-text">
+										<p class="mb-0">&copy; 2020 Lung cancer detection system. All rights reserved.</p>
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-6">
+
+									<!-- Copyright Menu -->
+									<div class="copyright-menu">
+										<ul class="policy-menu">
+											<li><a href="">Terms and Conditions</a></li>
+											<li><a href="">Policy</a></li>
+										</ul>
+									</div>
+									<!-- /Copyright Menu -->
+
+								</div>
+							</div>
+						</div>
+						<!-- /Copyright -->
+
+					</div>
+				</div>
+				<!-- /Footer Bottom -->
+
+			</footer>
+			<!-- /Footer --><script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+
+		<!-- Bootstrap Core JS -->
+		<script src="{{ url_for('static', filename='assets/js/popper.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='assets/js/bootstrap.min.js') }}"></script>
+		<!-- Datetimepicker JS -->
+		<script src="{{ url_for('static', filename='assets/js/moment.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='assets/js/bootstrap-datetimepicker.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='assets/plugins/daterangepicker/daterangepicker.js') }}"></script>
+		<!-- Full Calendar JS -->
+        <script src="{{ url_for('static', filename='assets/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/plugins/fullcalendar/fullcalendar.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/plugins/fullcalendar/jquery.fullcalendar.js') }}"></script>
+		<!-- Sticky Sidebar JS -->
+        <script src="{{ url_for('static', filename='assets/plugins/theia-sticky-sidebar/ResizeSensor.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
+		<!-- Select2 JS -->
+		<script src="{{ url_for('static', filename='assets/plugins/select2/js/select2.min.js') }}"></script>
+			<!-- Fancybox JS -->
+			<script src="{{ url_for('static', filename='assets/plugins/fancybox/jquery.fancybox.min.js') }}"></script>
+		<!-- Dropzone JS -->
+		<script src="{{ url_for('static', filename='assets/plugins/dropzone/dropzone.min.js') }}"></script>
+
+		<!-- Bootstrap Tagsinput JS -->
+		<script src="{{ url_for('static', filename='assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.js') }}"></script>
+
+		<!-- Profile Settings JS -->
+		<script src="{{ url_for('static', filename='assets/js/profile-settings.js') }}"></script>
+		<!-- Circle Progress JS -->
+		<script src="{{ url_for('static', filename='assets/js/circle-progress.min.js') }}"></script>
+		<!-- Slick JS -->
+		<script src="{{ url_for('static', filename='assets/js/slick.js') }}"></script>
+
+		<!-- Custom JS -->
+		<script src="{{ url_for('static', filename='assets/js/script.js') }}"></script>
+
+
+
+
+ <script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
+
+ <script>
+  document.addEventListener('turbolinks:before-visit', function() {
+    var $navbar = $('.navbar-collapse');
+
+    if ( $navbar.hasClass('in') ) {
+      $navbar.collapse('hide');
+    }
+  });
+
+  function myFunction1() {
+  var element = document.getElementById("myDIV11");
+
+  if (element.classList) {
+    element.classList.toggle("show");
+
+  } else {
+    var classes = element.className.split(" ");
+    var i = classes.indexOf("show");
+
+
+    if (i >= 0)
+      classes.splice(i, 1);
+    else
+      classes.push("show");
+
+      element.className = classes.join(" ");
+  }
+  var element = document.getElementById("myDIV12");
+
+  if (element.classList) {
+    element.classList.toggle("show");
+
+  } else {
+    var classes = element.className.split(" ");
+    var i = classes.indexOf("show");
+
+
+    if (i >= 0)
+      classes.splice(i, 1);
+    else
+      classes.push("show");
+
+      element.className = classes.join(" ");
+  }
+}
+
+function myFunction2() {
+  var element = document.getElementById("myDIV21");
+
+  if (element.classList) {
+    element.classList.toggle("show");
+
+  } else {
+    var classes = element.className.split(" ");
+    var i = classes.indexOf("show");
+
+
+    if (i >= 0)
+      classes.splice(i, 1);
+    else
+      classes.push("show");
+
+      element.className = classes.join(" ");
+  }
+  var element = document.getElementById("myDIV22");
+
+  if (element.classList) {
+    element.classList.toggle("show");
+
+  } else {
+    var classes = element.className.split(" ");
+    var i = classes.indexOf("show");
+
+
+    if (i >= 0)
+      classes.splice(i, 1);
+    else
+      classes.push("show");
+
+      element.className = classes.join(" ");
+  }
+
+}
+function myFunction3() {
+  var element = document.getElementById("myDIV31");
+
+  if (element.classList) {
+    element.classList.toggle("show");
+
+  } else {
+    var classes = element.className.split(" ");
+    var i = classes.indexOf("show");
+
+
+    if (i >= 0)
+      classes.splice(i, 1);
+    else
+      classes.push("show");
+
+      element.className = classes.join(" ");
+  }
+  var element = document.getElementById("myDIV32");
+
+  if (element.classList) {
+    element.classList.toggle("show");
+
+  } else {
+    var classes = element.className.split(" ");
+    var i = classes.indexOf("show");
+
+
+    if (i >= 0)
+      classes.splice(i, 1);
+    else
+      classes.push("show");
+
+      element.className = classes.join(" ");
+  }
+}
+  function myFunction4() {
+  var element = document.getElementById("myDIV41");
+
+
+  if (element.classList) {
+    element.classList.toggle("show");
+
+  } else {
+    var classes = element.className.split(" ");
+    var i = classes.indexOf("show");
+
+
+    if (i >= 0)
+      classes.splice(i, 1);
+    else
+      classes.push("show");
+
+      element.className = classes.join(" ");
+  }
+  var element = document.getElementById("myDIV42");
+
+  if (element.classList) {
+    element.classList.toggle("show");
+
+  } else {
+    var classes = element.className.split(" ");
+    var i = classes.indexOf("show");
+
+
+    if (i >= 0)
+      classes.splice(i, 1);
+    else
+      classes.push("show");
+
+      element.className = classes.join(" ");
+  }
+}
+
+ </script>
+<!-- Load Facebook SDK for JavaScript -->
+
+
+
+<script>
+$(document).ready(function(){
+
+ $('#country_name').keyup(function(){
+        var query = $(this).val();
+        if(query != '')
+        {
+         var _token = $('input[name="_token"]').val();
+
+        }
+    });
+
+
+
+});
+</script>
+
+  </body>
+</html>
+<script>
+$(document).ready(function(){
+  // alert(1);
+ /*$('.submenu li a').click(function(){
+   $(.submenu li a).removeClass("active");
+   $(this).addClass("active");
+   $('.has-submenu a').removeClass("active");
+   $('.has-submenu a').addClass("active");
+
+   //$(this).toggleClass("active");
+ });*/
+});
+</script>
