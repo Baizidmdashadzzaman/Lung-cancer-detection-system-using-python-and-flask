@@ -1,11 +1,18 @@
 import pickle
 import numpy as np
-import pandas as pd
 import os
 import sys
 import datetime
 
 from flask import Flask, render_template, request, redirect, url_for, session, flash, app, jsonify
+
+from flask_mysqldb import MySQL
+
+app = Flask(__name__)
+app.config.from_object('config.Config')
+
+mysql = MySQL(app)
+
 
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'

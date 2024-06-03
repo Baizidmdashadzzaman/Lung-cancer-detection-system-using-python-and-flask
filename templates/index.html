@@ -4,11 +4,13 @@
 
 {% block content %}
 
-    <section class="section section-search">
+    <section class="section section-search" style="padding: 20px 0;">
 				<div class="container-fluid">
 					<div class="banner-wrapper">
 						<div class="banner-header text-center">
-                            <h1 class="bn">ফুসফুসের ক্যান্সার সনাক্তকরণ সিস্টেম </h1>
+
+                            <img src="{{ url_for('static', filename='images/heartbeat.gif') }}" style="width: 250px;mix-blend-mode: darken;" alt="Logo">
+                            <h1 class="bn">ফুসফুসের ক্যান্সার সনাক্তকরণ সিস্টেম</h1>
 							<h2 class="bn">ব্যবহার করে আপনার ফুসফুসের ক্যান্সারের লক্ষণ আছে কিনা তা পরীক্ষা করুন</h2>
                             <br>
                             <a class="btn btn-primary submit-btn bn" href="/patient-login">
