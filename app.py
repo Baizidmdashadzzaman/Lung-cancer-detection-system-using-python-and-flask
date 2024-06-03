@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import os
 import sys
+import datetime
 
 from flask import Flask, render_template, request, redirect, url_for, session, flash, app, jsonify
 
@@ -79,28 +80,76 @@ def logout():
     return redirect(url_for('home'))
 
 
-@app.route('/predict_api', methods=['POST'])
-def predict_api():
-    data = request.json['data']
-    print(data)
-    print(np.array(list(data.values())).reshape(1, -1))
-    new_data = scalar.transform(np.array(list(data.values())).reshape(1, -1))
-    output = regmodel.predict(new_data)
-    print(output[0])
-    return jsonify(output[0])
-
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    # data = [float(x) for x in request.form.values()]
-    # final_input = np.array(data).reshape(1, -1)
-    print(request.form['level'])
-    sys.exit()
-    # output = regmodel.predict(final_input)[0]
-    # return render_template("home.html",
-    # prediction_text=f"The House Price Prediction is {output} hundreds of thousands of dollars")
-    title = "If you dont have lung cancer"
-    return render_template('patient/dashboard.html',title=title)
+    age = request.form['age']
+    gender = request.form['gender']
+    air_pollution = request.form['air_pollution']
+    alcohol_use = request.form['alcohol_use']
+    dust_allergy = request.form['dust_allergy']
+    occupational_hazards = request.form['occupational_hazards']
+    genetic_risk = request.form['genetic_risk']
+    chronic_lung_disease = request.form['chronic_lung_disease']
+    balanced_diet = request.form['balanced_diet']
+    obesity = request.form['obesity']
+    smoking = request.form['smoking']
+    passive_smoker = request.form['passive_smoker']
+    chest_pain = request.form['chest_pain']
+    coughing_of_blood = request.form['coughing_of_blood']
+    fatigue = request.form['fatigue']
+    weight_loss = request.form['weight_loss']
+    shortness_of_breath = request.form['shortness_of_breath']
+    wheezing = request.form['wheezing']
+    swallowing_difficulty = request.form['swallowing_difficulty']
+    clubbing_of_finger_nails = request.form['clubbing_of_finger_nails']
+    frequent_cold = request.form['frequent_cold']
+    dry_cough = request.form['dry_cough']
+    snoring = request.form['snoring']
+
+    prediction = classifier.predict([[age, gender, air_pollution, alcohol_use, dust_allergy, occupational_hazards, genetic_risk, chronic_lung_disease, balanced_diet, obesity, smoking, passive_smoker, chest_pain, coughing_of_blood, fatigue, weight_loss, shortness_of_breath, wheezing, swallowing_difficulty, clubbing_of_finger_nails, frequent_cold, dry_cough, snoring]])
+
+    if(prediction == [1]):
+        prediction_result = "কম ঝুঁকি"
+    elif(prediction == [2]):   
+        prediction_result = "মাঝারি ঝুঁকি"
+    else:  
+        prediction_result = "উচ্চ ঝুঁকি"  
+
+    # print(prediction_result)
+    # sys.exit()
+    current_date = datetime.date.today()
+    title = f"({prediction_result}) Patient test result"
+    return render_template(
+        'patient/patient-test-result.html',
+        title=title,
+        prediction=prediction,
+        prediction_result=prediction_result,
+        age=age,
+        gender=gender,
+        air_pollution=air_pollution,
+        alcohol_use=alcohol_use,
+        dust_allergy=dust_allergy,
+        occupational_hazards=occupational_hazards,
+        genetic_risk=genetic_risk,
+        chronic_lung_disease=chronic_lung_disease,
+        balanced_diet=balanced_diet,
+        obesity=obesity,
+        smoking=smoking,
+        passive_smoker=passive_smoker,
+        chest_pain=chest_pain,
+        coughing_of_blood=coughing_of_blood,
+        fatigue=fatigue,
+        weight_loss=weight_loss,
+        shortness_of_breath=shortness_of_breath,
+        wheezing=wheezing,
+        swallowing_difficulty=swallowing_difficulty,
+        clubbing_of_finger_nails=clubbing_of_finger_nails,
+        frequent_cold=frequent_cold,
+        dry_cough=dry_cough,
+        snoring=snoring,
+        current_date=current_date
+    )
 
 
 

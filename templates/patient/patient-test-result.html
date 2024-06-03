@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+
+<div class="content" style="transform: none; min-height: 32.969px;">
+				<div class="container-fluid" style="transform: none;">
+					<div class="row" style="transform: none;">
+
+					<!-- Profile Sidebar -->
+                        {% include 'patient/nav.html' %}
+					<!-- / Profile Sidebar -->
+
+					<div class="col-md-7 col-lg-8 col-xl-9">
+                        <div class="prescribe-download" style="padding-bottom:50px">
+                            <button onclick="printInvoice()" style="float:right" class="btn btn-primary prime-btn bn">রিপোর্ট প্রিন্ট করুন</button>
+                         </div>
+                        
+                        <div class="view-prescribe invoice-content" id="invoiceContent">
+                            <div class="invoice-item">
+                               <div class="row">
+                                  <div class="col-md-6">
+                                     <div class="invoice-logo">
+                                        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="logo">
+                                     </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                     <p class="invoice-details bn">
+                                        <strong>রিপোর্ট নম্বর:</strong> #০১৮৪৬<br>
+                                        <strong>পরীক্ষার তারিখ:</strong> {{current_date}}
+                                     </p>
+                                  </div>
+                               </div>
+                            </div>
+                            <div class="invoice-item">
+                               <div class="row">
+                                  <div class="col-md-4">
+                                     <div class="invoice-info">
+                                        <h6 class="customer-text bn">রোগীর তথ্য</h6>
+                                        <p class="invoice-details invoice-details-two bn">
+                                            বায়েজিদ মোঃ কামরুজ্জামান <br>
+                                            ০১৮৪৬২০০৪১৩, <br>
+                                            পাহাড়তলী ১২ কোয়ার্টার চট্টগ্রাম <br>
+                                        </p>
+                                     </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                     <div class="invoice-info">
+                                        
+                                     </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                     <div class="invoice-info invoice-info2">
+                                        <h6 class="customer-text bn">পরীক্ষার ফলাফল</h6>
+                                        <p class="invoice-details bn" style="font-size:20px; color: {% if prediction == [1] %}green{% elif prediction == [2] %}blue{% else %}red{% endif %}">
+                                            {{ prediction_result }}
+                                        </p>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                            <div class="invoice-item invoice-table-wrap">
+                               <div class="row">
+                                  <div class="col-md-12">
+                                     <h4 class="bn">পরীক্ষার বিস্তারিত</h4>
+                                     <div class="table-responsive">
+                                        <table class="invoice-table table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th class="bn">পরীক্ষার ক্ষেত্র বিবরণ</th>
+                                                    <th class="bn">ফলাফল</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="bn">বয়স</td>
+                                                    <td>{{ age }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bn">লিঙ্গ</td>
+                                                    <td>{{ gender }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bn">বায়ু দূষণ</td>
+                                                    <td>{{ air_pollution }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bn">মদ্যপান</td>
+                                                    <td>{{ alcohol_use }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bn">ধুলা অ্যালার্জি</td>
+                                                    <td>{{ dust_allergy }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bn">পেশাগত ঝুঁকি</td>
+                                                    <td>{{ occupational_hazards }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bn">জেনেটিক ঝুঁকি</td>
+                                                    <td>{{ genetic_risk }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bn">ক্লান্তিকর ফুসফুসের রোগ</td>
+                                                    <td>{{ chronic_lung_disease }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bn">সুষম খাদ্য</td>
+                                                    <td>{{ balanced_diet }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bn">স্থূলতা</td>
+                                                    <td>{{ obesity }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bn">ধূমপান</td>
+                                                    <td>{{ smoking }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bn">প্যাসিভ স্মোকার</td>
+                                                    <td>{{ passive_smoker }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bn">বুকের ব্যথা</td>
+                                                    <td>{{ chest_pain }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bn">রক্ত কাশি</td>
+                                                    <td>{{ coughing_of_blood }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bn">ক্লান্তি</td>
+                                                    <td>{{ fatigue }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bn">ওজন হ্রাস</td>
+                                                    <td>{{ weight_loss }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bn">শ্বাসকষ্ট</td>
+                                                    <td>{{ shortness_of_breath }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bn">শ্বাসকষ্ট</td>
+                                                    <td>{{ wheezing }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bn">গলায় খাওয়া কষ্ট</td>
+                                                    <td>{{ swallowing_difficulty }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bn">নখের ক্লাবিং</td>
+                                                    <td>{{ clubbing_of_finger_nails }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bn">ঘন ঘন ঠান্ডা</td>
+                                                    <td>{{ frequent_cold }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bn">শুষ্ক কাশি</td>
+                                                    <td>{{ dry_cough }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bn">নাক ডাকা</td>
+                                                    <td>{{ snoring }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                            <div class="other-info mb-0">
+                               <h4 class="bn">দয়া করে পড়ুন</h4>
+                               <p class="text-muted mb-0 bn">
+                                ডায়াগনোসিস নিশ্চিত করুন: আপনার ডায়াগনোসিস একজন বিশেষজ্ঞ দ্বারা নিশ্চিত করা উচিত, সাধারণত একজন পালমোনোলজিস্ট বা অনকোলজিস্ট। ফুসফুসের ক্যান্সারের ধরন এবং পর্যায় বোঝা গুরুত্বপূর্ণ।
+                                <br/>
+                                দ্বিতীয় মতামত: সমস্ত চিকিৎসার বিকল্পগুলি অন্বেষণ করার জন্য একটি দ্বিতীয় মতামত বিবেচনা করুন।
+                               </p>
+                            </div>
+                         </div>
+                         
+
+
+                        {% if prediction == [1] %}
+                            {% include 'reuseable/if-you-dont-have-lung-cancer-lib.html' %}
+                        {% else %}
+                            {% include 'reuseable/if-you-have-lung-cancer-lib.html' %}
+                        {% endif %}
+
+
+
+
+                    </div>
+
+
+					</div>
+
+				</div>
+</div>
+<script>
+    function printInvoice() {
+        var contentToPrint = document.getElementById("invoiceContent").innerHTML;
+        var originalBody = document.body.innerHTML;
+        document.body.innerHTML = contentToPrint;
+        window.print();
+        document.body.innerHTML = originalBody;
+    }
+</script>
+{% endblock %}

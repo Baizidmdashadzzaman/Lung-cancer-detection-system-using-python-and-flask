@@ -8,6 +8,14 @@
          {% include 'patient/nav.html' %}
          <!-- / Profile Sidebar -->
          <div class="col-md-7 col-lg-8 col-xl-9">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-12 col-lg-12 ">
+                    <div class="login-header">
+                        <h2 class="bn"><span>পরীক্ষা শুরু করতে আপনার ডেটা পূরণ করুন</span></h2>
+                    </div>
+                </div>
+            </div>
+
             <div class="card">
                <div class="card-body">
                   <!-- Profile Settings Form -->
@@ -21,11 +29,11 @@
                         </div>
                         <div class="form-group" style="margin-right: 5px;">
                             <label for="age" class='bn' style="font-size:20px">বয়স</label>
-                            <input type="number" id="age" name="age" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
+                            <input required type="number" id="age" name="age" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
                         </div>
                         <div class="form-group" style="margin-right: 5px;">
                             <label for="gender" class='bn' style="font-size:20px">লিঙ্গ</label>
-                            <select id="gender" name="gender" class="form-control">
+                            <select required id="gender" name="gender" class="form-control">
                                 <option value="" disabled selected>আপনার ডেটা পূরণ করুন</option>
                                 <option value="1">পুরুষ</option>
                                 <option value="2">মহিলা</option>
@@ -33,91 +41,87 @@
                         </div>
                         <div class="form-group" style="margin-right: 5px;">
                             <label for="air_pollution" class='bn' style="font-size:20px">বায়ু দূষণ</label>
-                            <input type="text" id="air_pollution" name="air_pollution" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
+                            <input required type="text" id="air_pollution" name="air_pollution" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
                         </div>
                         <div class="form-group" style="margin-right: 5px;">
                             <label for="alcohol_use" class='bn' style="font-size:20px">মদ্যপান</label>
-                            <input type="text" id="alcohol_use" name="alcohol_use" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
+                            <input required type="text" id="alcohol_use" name="alcohol_use" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
                         </div>
                         <div class="form-group" style="margin-right: 5px;">
                             <label for="dust_allergy" class='bn' style="font-size:20px">ধুলা অ্যালার্জি</label>
-                            <input type="text" id="dust_allergy" name="dust_allergy" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
+                            <input required type="text" id="dust_allergy" name="dust_allergy" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
                         </div>
                         <div class="form-group" style="margin-right: 5px;">
                             <label for="occupational_hazards" class='bn' style="font-size:20px">পেশাগত ঝুঁকি</label>
-                            <input type="text" id="occupational_hazards" name="occupational_hazards" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
+                            <input required type="text" id="occupational_hazards" name="occupational_hazards" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
                         </div>
                         <div class="form-group" style="margin-right: 5px;">
                             <label for="genetic_risk" class='bn' style="font-size:20px">জেনেটিক ঝুঁকি</label>
-                            <input type="text" id="genetic_risk" name="genetic_risk" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
+                            <input required type="text" id="genetic_risk" name="genetic_risk" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
                         </div>
                         <div class="form-group" style="margin-right: 5px;">
                             <label for="chronic_lung_disease" class='bn' style="font-size:20px">ক্লান্তিকর ফুসফুসের রোগ</label>
-                            <input type="text" id="chronic_lung_disease" name="chronic_lung_disease" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
+                            <input required type="text" id="chronic_lung_disease" name="chronic_lung_disease" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
                         </div>
                         <div class="form-group" style="margin-right: 5px;">
                             <label for="balanced_diet" class='bn' style="font-size:20px">সুষম খাদ্য</label>
-                            <input type="text" id="balanced_diet" name="balanced_diet" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
+                            <input required type="text" id="balanced_diet" name="balanced_diet" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
                         </div>
                         <div class="form-group" style="margin-right: 5px;">
                             <label for="obesity" class='bn' style="font-size:20px">স্থূলতা</label>
-                            <input type="text" id="obesity" name="obesity" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
+                            <input required type="text" id="obesity" name="obesity" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
                         </div>
                         <div class="form-group" style="margin-right: 5px;">
                             <label for="smoking" class='bn' style="font-size:20px">ধূমপান</label>
-                            <input type="text" id="smoking" name="smoking" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
+                            <input required type="text" id="smoking" name="smoking" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
                         </div>
                         <div class="form-group" style="margin-right: 5px;">
                             <label for="passive_smoker" class='bn' style="font-size:20px">প্যাসিভ স্মোকার</label>
-                            <input type="text" id="passive_smoker" name="passive_smoker" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
+                            <input required type="text" id="passive_smoker" name="passive_smoker" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
                         </div>
                         <div class="form-group" style="margin-right: 5px;">
                             <label for="chest_pain" class='bn' style="font-size:20px">বুকের ব্যথা</label>
-                            <input type="text" id="chest_pain" name="chest_pain" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
+                            <input required type="text" id="chest_pain" name="chest_pain" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
                         </div>
                         <div class="form-group" style="margin-right: 5px;">
                             <label for="coughing_of_blood" class='bn' style="font-size:20px">রক্ত কাশি</label>
-                            <input type="text" id="coughing_of_blood" name="coughing_of_blood" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
+                            <input required type="text" id="coughing_of_blood" name="coughing_of_blood" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
                         </div>
                         <div class="form-group" style="margin-right: 5px;">
                             <label for="fatigue" class='bn' style="font-size:20px">ক্লান্তি</label>
-                            <input type="text" id="fatigue" name="fatigue" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
+                            <input required type="text" id="fatigue" name="fatigue" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
                         </div>
                         <div class="form-group" style="margin-right: 5px;">
                             <label for="weight_loss" class='bn' style="font-size:20px">ওজন হ্রাস</label>
-                            <input type="text" id="weight_loss" name="weight_loss" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
+                            <input required type="text" id="weight_loss" name="weight_loss" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
                         </div>
                         <div class="form-group" style="margin-right: 5px;">
                             <label for="shortness_of_breath" class='bn' style="font-size:20px">শ্বাসকষ্ট</label>
-                            <input type="text" id="shortness_of_breath" name="shortness_of_breath" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
+                            <input required type="text" id="shortness_of_breath" name="shortness_of_breath" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
                         </div>
                         <div class="form-group" style="margin-right: 5px;">
                             <label for="wheezing" class='bn' style="font-size:20px">শ্বাসকষ্ট</label>
-                            <input type="text" id="wheezing" name="wheezing" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
+                            <input required type="text" id="wheezing" name="wheezing" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
                         </div>
                         <div class="form-group" style="margin-right: 5px;">
                             <label for="swallowing_difficulty" class='bn' style="font-size:20px">গলায় খাওয়া কষ্ট</label>
-                            <input type="text" id="swallowing_difficulty" name="swallowing_difficulty" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
+                            <input required type="text" id="swallowing_difficulty" name="swallowing_difficulty" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
                         </div>
                         <div class="form-group" style="margin-right: 5px;">
                             <label for="clubbing_of_finger_nails" class='bn' style="font-size:20px">নখের ক্লাবিং</label>
-                            <input type="text" id="clubbing_of_finger_nails" name="clubbing_of_finger_nails" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
+                            <input required type="text" id="clubbing_of_finger_nails" name="clubbing_of_finger_nails" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
                         </div>
                         <div class="form-group" style="margin-right: 5px;">
                             <label for="frequent_cold" class='bn' style="font-size:20px">ঘন ঘন ঠান্ডা</label>
-                            <input type="text" id="frequent_cold" name="frequent_cold" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
+                            <input required type="text" id="frequent_cold" name="frequent_cold" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
                         </div>
                         <div class="form-group" style="margin-right: 5px;">
                             <label for="dry_cough" class='bn' style="font-size:20px">শুষ্ক কাশি</label>
-                            <input type="text" id="dry_cough" name="dry_cough" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
+                            <input required type="text" id="dry_cough" name="dry_cough" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
                         </div>
                         <div class="form-group" style="margin-right: 5px;">
                             <label for="snoring" class='bn' style="font-size:20px">নাক ডাকা</label>
-                            <input type="text" id="snoring" name="snoring" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
-                        </div>
-                        <div class="form-group" style="margin-right: 5px;">
-                            <label for="level" class='bn' style="font-size:20px">স্তর</label>
-                            <input type="text" id="level" name="level" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
+                            <input required type="text" id="snoring" name="snoring" class="form-control" placeholder="আপনার ডেটা পূরণ করুন">
                         </div>
                      </div>
                      <div class="submit-section">
@@ -127,8 +131,68 @@
                   <!-- /Profile Settings Form -->
                </div>
             </div>
+
+            <br/><br/>
+
+            <div class="row align-items-center justify-content-center">
+                <div class="card card-body col-md-12 col-lg-12 ">
+                    <div class="login-header">
+                        <h2 class="bn"><span>ডেমো ডেটা দিয়ে ফর্ম পূরণ করুন</span></h2>
+                    </div>
+                    <div class="row form-row social-login">
+                            <div class="col-4">
+                                <button onclick="fillLowRiskData()" class="btn btn-primary submit-btn btn-block">
+                                <font size="4" class="bn">
+                                    কম ঝুঁকির তথ্য
+                                </font>
+                                </button>
+                            </div>
+                            <div class="col-4">
+                                <button onclick="fillMediumRiskData()" class="btn btn-info submit-btn btn-block">
+                                <font size="4" class="bn">
+                                    মাঝারি ঝুঁকির তথ্য
+                                </font>
+                                </button>
+                            </div>
+                            <div class="col-4">
+                                <button onclick="fillHighRiskData()"  class="btn btn-danger submit-btn btn-block">
+                                <font size="4" class="bn">
+                                    উচ্চ ঝুঁকির তথ্য
+                                </font>
+                                </button>
+                            </div>
+                    </div>
+                </div>
+            </div>
          </div>
       </div>
    </div>
 </div>
+
+<script>
+    let fields = [
+        'age', 'gender', 'air_pollution', 'alcohol_use', 'dust_allergy', 'occupational_hazards', 'genetic_risk',
+        'chronic_lung_disease', 'balanced_diet', 'obesity', 'smoking', 'passive_smoker', 'chest_pain', 
+        'coughing_of_blood', 'fatigue', 'weight_loss', 'shortness_of_breath', 'wheezing', 'swallowing_difficulty', 
+        'clubbing_of_finger_nails', 'frequent_cold', 'dry_cough', 'snoring'
+    ];
+    function fillLowRiskData() {
+        const data = [33,1,2,4,5,4,3,2,2,4,3,2,2,4,3,4,2,2,3,1,2,3,4];
+        fields.forEach((field, index) => {
+            document.getElementById(field).value = data[index];
+        });
+    }
+    function fillMediumRiskData() {
+        const data = [17,1,3,1,5,3,4,2,2,2,2,4,2,3,1,3,7,8,6,2,1,7,2];
+        fields.forEach((field, index) => {
+            document.getElementById(field).value = data[index];
+        });
+    }
+    function fillHighRiskData() {
+        const data = [35,1,4,5,6,5,5,4,6,7,2,3,4,8,8,7,9,2,1,4,6,7,2];
+        fields.forEach((field, index) => {
+            document.getElementById(field).value = data[index];
+        });
+    }
+</script>
 {% endblock %}
