@@ -14,10 +14,69 @@ app.config.from_object('config.Config')
 mysql = MySQL(app)
 
 
-app = Flask(__name__)
 app.secret_key = 'supersecretkey'
 
 classifier = pickle.load(open('model.pkl', 'rb'))
+
+# crud start
+def convert_to_dict(cur, row):
+    if cur.description:
+        return dict((cur.description[idx][0], value) for idx, value in enumerate(row))
+    return {}
+
+@app.route('/patients')
+def patients_list():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM patients")
+    rows = cur.fetchall()
+    patients_list = [convert_to_dict(cur, row) for row in rows]
+    cur.close()
+    return render_template('admin/patients/list.html', patients=patients_list)
+
+@app.route('/patients/add', methods=['GET', 'POST'])
+def patients_add():
+    if request.method == 'POST':
+        username = request.form['username']
+        email = request.form['email']
+        password = request.form['password']
+        isadmin = 0
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO patients (username,email,password,isadmin) VALUES (%s,%s,%s,%s)", (username,email,password,isadmin))
+        mysql.connection.commit()
+        cur.close()
+        return redirect(url_for('patients_list'))
+    return render_template('admin/patients/add.html')
+
+@app.route('/patients/edit/<int:id>', methods=['GET', 'POST'])
+def patients_edit(id):
+    cur = mysql.connection.cursor()
+    if request.method == 'POST':
+        username = request.form['username']
+        email = request.form['email']
+        password = request.form['password']
+        isadmin = 0
+        cur.execute("UPDATE patients SET username = %s, email = %s, password = %s, isadmin = %s WHERE id = %s", 
+                    (username, email, password, isadmin, id))
+        mysql.connection.commit()
+        cur.close()
+        return redirect(url_for('patients_list'))
+
+    cur.execute("SELECT * FROM patients WHERE id = %s", (id,))
+    row = cur.fetchone()
+    patient = convert_to_dict(cur, row)
+    cur.close()
+    return render_template('admin/patients/edit.html', patient=patient)
+
+@app.route('/patients/delete/<int:id>')
+def patients_delete(id):
+    cur = mysql.connection.cursor()
+    cur.execute("DELETE FROM patients WHERE id = %s", (id,))
+    mysql.connection.commit()
+    cur.close()
+    return redirect(url_for('patients_list'))
+# crud end
+
+
 
 @app.route('/')
 def home():
@@ -160,5 +219,8 @@ def predict():
 
 
 
+
+
 if __name__ == '__main__':
-    app.run()
+    # app.run()
+    app.run(debug=True)

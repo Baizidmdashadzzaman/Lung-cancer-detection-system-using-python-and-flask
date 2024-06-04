@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit patient</title>
+</head>
+<body>
+    <h1>Edit patient{{patient}}</h1>
+    <form action="/patients/edit/{{ patient.id }}" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="username" name="username" value="{{ patient.username }}">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="{{ patient.email }}">
+        <label for="email">Password:</label>
+        <input type="email" id="password" name="password" value="{{ patient.password }}">
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>
