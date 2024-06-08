@@ -31,7 +31,8 @@ def patients_list():
     rows = cur.fetchall()
     patients_list = [convert_to_dict(cur, row) for row in rows]
     cur.close()
-    return render_template('admin/patients/list.html', patients=patients_list)
+    title="Patients list"
+    return render_template('admin/patients/list.html', patients=patients_list,title=title)
 
 @app.route('/patients/add', methods=['GET', 'POST'])
 def patients_add():
@@ -45,7 +46,8 @@ def patients_add():
         mysql.connection.commit()
         cur.close()
         return redirect(url_for('patients_list'))
-    return render_template('admin/patients/add.html')
+    title="Add new patient"
+    return render_template('admin/patients/add.html',title=title)
 
 @app.route('/patients/edit/<int:id>', methods=['GET', 'POST'])
 def patients_edit(id):
@@ -65,6 +67,7 @@ def patients_edit(id):
     row = cur.fetchone()
     patient = convert_to_dict(cur, row)
     cur.close()
+    title="Edit patient information"
     return render_template('admin/patients/edit.html', patient=patient)
 
 @app.route('/patients/delete/<int:id>')
