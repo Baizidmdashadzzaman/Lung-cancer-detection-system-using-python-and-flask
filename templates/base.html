@@ -30,36 +30,36 @@
 
 		<!-- Main CSS -->
 		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}">
+
+
         <style>
 
-		.modal-backdrop.fade {
-opacity: 0;
-filter: alpha(opacity=0);
-}
-.modal-backdrop.fade.in {
-opacity: 0.5;
-filter: alpha(opacity=50);
-}
-.custom-modal{
-	 background-color: rgba(0, 0, 0, .4);
-}
-
-.main-nav {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding-left: 30px;
-}
-
-
+           .modal-backdrop.fade {
+           opacity: 0;
+           filter: alpha(opacity=0);
+           }
+           .modal-backdrop.fade.in {
+           opacity: 0.5;
+           filter: alpha(opacity=50);
+           }
+           .custom-modal{
+           	 background-color: rgba(0, 0, 0, .4);
+           }
+           
+           .main-nav {
+               display: -webkit-box;
+               display: -ms-flexbox;
+               display: flex;
+               list-style: none;
+               margin: 0;
+               padding-left: 30px;
+           }
 		</style>
       <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href="https://fonts.maateen.me/bangla/font.css" rel="stylesheet">
 	<style>
 	.bn {
-    font-family: 'Bangla', Arial, sans-serif !important;
+       font-family: 'Bangla', Arial, sans-serif !important;
      }
 	</style>
       <meta name="keywords" content="EDoctorMeet – প্রবাসে বাংলার ডাক্তার ,EDoctorMeet.com,Online Doctor,Probashider jonno doctor,Bangla Doctor" />
@@ -179,7 +179,7 @@ filter: alpha(opacity=50);
 
 						   <div class="dek-menu">
 						   	<li class="nav-item contact-item" >
-						     <a class="nav-link header-login bn" href="{{ url_for('patientlogin') }}"><font size="4" color="white">লগইন / রেজিষ্টার</font></a>
+						     <a class="nav-link header-login bn" href="{{ url_for('facescanlogin') }}"><font size="4" color="white">লগইন / রেজিষ্টার</font></a>
 
 						   </li>
 
@@ -202,7 +202,7 @@ filter: alpha(opacity=50);
 							</div>
 
 							<li class="nav-item">
-							<a class="nav-link header-login bn" href="{{ url_for('patientlogin') }}"><font size="4">লগইন / রেজিষ্টার</font></a>
+							<a class="nav-link header-login bn" href="{{ url_for('facescanlogin') }}"><font size="4">লগইন / রেজিষ্টার</font></a>
 							</li>
 
 						</li>
