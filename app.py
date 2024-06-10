@@ -62,6 +62,11 @@ def capture_by_frames():
         
 @app.route('/face-scan')
 def facescanlogin():
+    user = session.get('user')
+    if user:
+        flash('Already logged in', 'success')
+        return redirect(url_for('patientdashboard'))
+    
     title = "Scan your face"
     return render_template('facescan/index.html',title=title)
 
@@ -144,7 +149,6 @@ def patients_delete(id):
 
 @app.route('/')
 def home():
-
     title = "Home"
     return render_template('index.html',title=title)
 @app.route('/about')
