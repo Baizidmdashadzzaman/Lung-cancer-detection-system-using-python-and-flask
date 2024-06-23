@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 04, 2024 at 04:03 PM
+-- Generation Time: Jun 23, 2024 at 07:36 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -40,7 +40,8 @@ CREATE TABLE `patients` (
 --
 
 INSERT INTO `patients` (`id`, `username`, `email`, `password`, `isadmin`) VALUES
-(3, 'admin', 'admin1@admin.com', 'admin1@admin.com', 0);
+(3, 'admin1', 'admin1@admin.com', 'admin1@admin.com', 0),
+(9, 'deom', 'deom@mail.com', 'deom@mail.com', 0);
 
 --
 -- Indexes for dumped tables
@@ -61,7 +62,7 @@ ALTER TABLE `patients`
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
